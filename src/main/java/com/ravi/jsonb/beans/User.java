@@ -4,6 +4,7 @@ import javax.json.bind.annotation.JsonbDateFormat;
 import javax.json.bind.annotation.JsonbNillable;
 import javax.json.bind.annotation.JsonbNumberFormat;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @JsonbNillable
@@ -13,12 +14,12 @@ public class User {
     private String firstName;
     private String lastName;
     @JsonbDateFormat("dd/MM/yyyy")
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @JsonbNumberFormat(value = "00.00", locale = "en-us")
     private BigDecimal annualSalary;
 
-    public User(int userId, String firstName, String lastName, LocalDateTime dateOfBirth, BigDecimal annualSalary) {
+    public User(int userId, String firstName, String lastName, LocalDate dateOfBirth, BigDecimal annualSalary) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,11 +54,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
