@@ -1,20 +1,20 @@
 package com.ravi.jsonb.beans;
 
-import javax.json.bind.annotation.JsonbDateFormat;
-import javax.json.bind.annotation.JsonbNillable;
 import javax.json.bind.annotation.JsonbNumberFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@JsonbNillable
+//@JsonbNillable-  moved to global config using jsonbConfig.withNullValues(true);
+//@JsonbPropertyOrder(PropertyOrderStrategy.ANY) - moved to global using         jsonbConfig.withPropertyOrderStrategy(PropertyOrderStrategy.ANY);
 public class User {
 
+    // @JsonbTransient- to remove this property from json when deserialization
     private int userId;
     private String firstName;
     private String lastName;
-    @JsonbDateFormat("dd/MM/yyyy")
+    //@JsonbDateFormat("dd/MM/yyyy") moved to global config using jsonbConfig.withDateFormat("dd/MM/yyyy", Locale.US);
     private LocalDate dateOfBirth;
+
 
     @JsonbNumberFormat(value = "00.00", locale = "en-us")
     private BigDecimal annualSalary;
@@ -36,14 +36,6 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {

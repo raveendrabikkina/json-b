@@ -1,6 +1,7 @@
 package com.ravi.jsonb.test;
 
 import com.ravi.jsonb.beans.User;
+import com.ravi.jsonb.mappers.ObjectMapper;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
@@ -19,7 +20,7 @@ public class Test {
         User user2 = new User(1, "Raveendra", "Bikkina", now, new BigDecimal(150000));
         User user = new User(1, null, null, null, null);
 
-        Jsonb jsonb = JsonbBuilder.create();
+        Jsonb jsonb = JsonbBuilder.create(ObjectMapper.getObjectMapper());
         String userJson = jsonb.toJson(user2, User.class);
         System.out.println(userJson);
 
